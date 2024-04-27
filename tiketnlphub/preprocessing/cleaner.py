@@ -5,7 +5,7 @@ import string
 import emoji
 from bs4 import BeautifulSoup
 
-from src.preprocessing.re_pattern import RegexString, RegexReplacement
+from tiketnlphub.preprocessing.re_pattern import RegexString, RegexReplacement
 
 
 def remove_digits(text: str) -> str:

@@ -1,6 +1,6 @@
 import pytest
 
-import src.preprocessing.cleaner as cleaner
+import tiketnlphub.preprocessing.cleaner as cleaner
 from tests.fixtures.preprocessing.cleaner import (
     remove_digits_test_cases,
     remove_emojis_emoticons_test_cases,
