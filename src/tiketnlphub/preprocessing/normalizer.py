@@ -2,7 +2,7 @@ import re
 import contractions
 import unicodedata
 
-from src.tiketnlphub.preprocessing.re_pattern import RegexString, RegexReplacement
+from .re_pattern import RegexString, RegexReplacement
 
 
 def normalize_to_ascii_chars(text: str) -> str:

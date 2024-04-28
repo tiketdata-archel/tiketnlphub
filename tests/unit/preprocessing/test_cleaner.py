@@ -1,6 +1,3 @@
-import sys
-sys.path.append('~/TiketNLPHub/src')
-
 import pytest
 
 import src.tiketnlphub.preprocessing.cleaner as cleaner
