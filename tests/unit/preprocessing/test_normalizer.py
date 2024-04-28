@@ -1,6 +1,6 @@
 import pytest
 
-import tiketnlphub.preprocessing.normalizer as normalizer
+import src.tiketnlphub.preprocessing.normalizer as normalizer
 from tests.fixtures.preprocessing.normalizer import (
     normalize_to_ascii_chars_test_cases, 
     normalize_punctuations_test_cases,
