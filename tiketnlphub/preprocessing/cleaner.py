@@ -265,11 +265,12 @@ def remove_html_tags(text: str) -> str:
     return BeautifulSoup(text, "html.parser").get_text()
 
 
-def remove_punctuations(text: str, rules: dict=None) -> str:
+def remove_punctuations(text: str, punct_to_remove: str='all') -> str:
     """
-    Removes all punctuations from the input text. 
+    Removes punctuations from the input text. 
     
-    However, if the optional parameter `rules` is provided, the punctuation is replaced by the specified rule.
+    By default, remove all punctuations. However, if you don't want to remove all punctuations, you can provide an optional string parameter `punct_to_remove` and pass the desired punctuation(s)).
+    If you want to replace them instead, see `tiketnlphub.preprocessing.normalizer.normalize_symbols`.
 
     Example
     -------
@@ -279,29 +280,29 @@ def remove_punctuations(text: str, rules: dict=None) -> str:
     I booked this hotel cheaper at 50 last weekend
 
     >>> from tiketnlphub.preprocessing.cleaner import remove_punctuations
-    >>> text = remove_punctuations("I booked this hotel cheaper at $50 last weekend.", rules={"$": "USD"})
+    >>> text = remove_punctuations("I booked this hotel cheaper at $50 last weekend!", punct_to_remove='.,!?')
     >>> text
-    I booked this hotel cheaper at USD50 last weekend.
+    I booked this hotel cheaper at $50 last weekend
 
     Parameters
     ----------
     text: str
         The text from which punctuations are to be removed/replaced.
 
-    rules: dict
-        Custom punctuation rules. Default is `None`.
+    punct_to_remove: str
+        Define own punctuations to remove. Default is `all`, remove all in `string.punctuations` punctuation list.
 
     Returns
     -------
     text: str
         The input text with all punctuations removed/replaced.
     """
-    if rules:
-        for regex_pattern, replacement in rules.items():
-            text = re.sub(regex_pattern, replacement, text)
-    else:
+    if punct_to_remove == 'all':
         translator = str.maketrans("", "", string.punctuation)
-        text = text.translate(translator)
+    else:
+        translator = str.maketrans("", "", punct_to_remove)
+        
+    text = text.translate(translator)
 
     return text
 

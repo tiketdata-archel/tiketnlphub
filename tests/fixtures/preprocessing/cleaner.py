@@ -129,12 +129,12 @@ def remove_punctuations_default_test_cases():
 
 
 @pytest.fixture
-def remove_punctuations_with_rules_test_cases():
+def remove_punctuations_with_punct_to_remove_test_cases():
     return [
         ("This is a normal text", "This is a normal text"),
-        ("This is first review; followed by second review", "This is first review, followed by second review"), 
-        ("This is first review.This is second review.", "This is first review This is second review "),  
-        ('"This is a review"', "This is a review"), 
+        ("This is first review; followed by second review", "This is first review; followed by second review"), 
+        ("This is first review. This is second review.", "This is first review This is second review"),  
+        ('"This is a review"', '"This is a review"'), 
     ]
 
 

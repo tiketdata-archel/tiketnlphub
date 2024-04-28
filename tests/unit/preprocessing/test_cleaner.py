@@ -12,7 +12,7 @@ from tests.fixtures.preprocessing.cleaner import (
     remove_bullets_test_cases,
     remove_html_tags_test_cases,
     remove_punctuations_default_test_cases,
-    remove_punctuations_with_rules_test_cases,
+    remove_punctuations_with_punct_to_remove_test_cases,
     remove_white_spaces_test_cases,
     remove_repeated_chars_test_cases,
     remove_repeated_words_test_cases,
@@ -81,14 +81,13 @@ def test_remove_html_tags(remove_html_tags_test_cases):
 
 def test_remove_punctuations_default(remove_punctuations_default_test_cases):
     for input_text, expected_output in remove_punctuations_default_test_cases:
-        result = cleaner.remove_punctuations(input_text, rules=None)
+        result = cleaner.remove_punctuations(input_text, punct_to_remove='all')
         assert expected_output == result
 
 
-def test_remove_punctuations_with_rules(remove_punctuations_with_rules_test_cases):
-    rules = {r"\.": " ", r'"': "", r";": ","}
-    for input_text, expected_output in remove_punctuations_with_rules_test_cases:
-        result = cleaner.remove_punctuations(input_text, rules=rules)
+def test_remove_punctuations_with_rules(remove_punctuations_with_punct_to_remove_test_cases):
+    for input_text, expected_output in remove_punctuations_with_punct_to_remove_test_cases:
+        result = cleaner.remove_punctuations(input_text, punct_to_remove='.,')
         assert expected_output == result
 
 
